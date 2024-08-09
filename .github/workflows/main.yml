@@ -21,4 +21,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: spring-boot-helper:latest
+          tags: nitinjohri2910/spring-boot-helper:latest
