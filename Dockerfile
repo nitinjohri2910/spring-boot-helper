@@ -1,20 +1,21 @@
-FROM amazoncorretto:21
+FROM amazoncorretto:21-alpine-jdk
+
 USER root
 
-
-
-RUN     yum -y update && \
-    yum -y install wget && \
-    yum install -y tar.x86_64 && \
-    yum clean all
 
 COPY . /tmp/app-build
 WORKDIR /tmp/app-build
 
-RUN chmod +x mvnw
-RUN ./mvnw clean install
+RUN \
+    chown 0:root /tmp/app-build && \
+    ./mvnw clean install
 
-WORKDIR /deployment/app
+RUN \
+   mkdir -p /deployments/app && \
+   chown 0:root -R /deployments && \
+   chown -R 775 /deployments
 
-COPY tmp/app-build/again*.jar /deployment/app/again-0.0.1-SNAPSHOT.jar
+WORKDIR /deployments/app
+
+COPY --from=build tmp/app-build/again*.jar /deployments/app/again-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java", "-jar", "/deployment/app/again-0.0.1-SNAPSHOT.jar"]
