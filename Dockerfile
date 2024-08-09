@@ -10,6 +10,8 @@ RUN \
     chown 0:root /tmp/app-build && \
     ./mvnw clean install
 
+FROM amazoncorretto:21-alpine-jdk
+
 RUN \
    mkdir -p /deployments/app && \
    chown 0:root -R /deployments && \
