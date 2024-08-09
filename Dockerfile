@@ -2,7 +2,6 @@ FROM amazoncorretto:21-alpine-jdk
 
 USER root
 
-
 COPY . /tmp/app-build
 WORKDIR /tmp/app-build
 
@@ -20,4 +19,4 @@ RUN \
 WORKDIR /deployments/app
 
 COPY --from=build tmp/app-build/target/again*.jar /deployments/app/again-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "/deployment/app/again-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/deployments/app/again-0.0.1-SNAPSHOT.jar"]
