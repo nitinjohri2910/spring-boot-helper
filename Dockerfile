@@ -11,6 +11,7 @@ RUN     yum -y update && \
 COPY . /tmp/app-build
 WORKDIR /tmp/app-build
 
+RUN chmod +x mvnw
 RUN ./mvnw clean install
 
 WORKDIR /deployment/app
