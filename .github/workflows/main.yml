@@ -13,7 +13,7 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: nitinjohri2910
+          username: nitinirvine29@gmail.com
           password: 9754822119
 
       - name: Build and push Docker image
