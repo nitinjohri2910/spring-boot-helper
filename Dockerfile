@@ -17,5 +17,5 @@ RUN \
 
 WORKDIR /deployments/app
 
-COPY --from=build tmp/app-build/again*.jar /deployments/app/again-0.0.1-SNAPSHOT.jar
+COPY --from=build tmp/app-build/target/again*.jar /deployments/app/again-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java", "-jar", "/deployment/app/again-0.0.1-SNAPSHOT.jar"]
