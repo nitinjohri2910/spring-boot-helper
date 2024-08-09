@@ -5,8 +5,8 @@ USER root
 COPY . /tmp/app-build
 WORKDIR /tmp/app-build
 
-#RUN \
-    #chown 0:root /tmp/app-build && \
+RUN chmod +x mvnw
+#RUN chown 0:root /tmp/app-build && \
 RUN ./mvnw clean install
 
 FROM amazoncorretto:21-alpine-jdk
